@@ -1,0 +1,11 @@
+- We need to build a copy utility (library) function
+  - source
+  - destination
+  - non blocking IO
+
+  - this utility function is suppose to inform its consumer(s) at the various stages in the lifecycle of the asynchronous operation that
+  it is doing
+    - inform when the read operation is done
+    - inform when the write operation is done
+    - inform when the read operation is failure
+    - inform when the write operation is a failure
