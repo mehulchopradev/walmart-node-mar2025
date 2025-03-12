@@ -82,3 +82,9 @@ setTimeout(() => {
   evenSeries(100);
 }
 , 0);
+
+
+console.log(process.env); // all OS level environment variables
+const API_KEY = process.env.API_KEY;
+console.log('*************** API KEY ***************', API_KEY);
+// make a call to the server to validate this API key

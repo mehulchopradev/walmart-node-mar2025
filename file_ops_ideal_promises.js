@@ -19,6 +19,7 @@ function readFileAsync(source) {
     readFile(source, {
       encoding: 'utf-8'
     }, (err, data) => {
+      // IO events callback queue
       if (err) {
         // something
         // broke ur promise
@@ -37,6 +38,7 @@ function writeFileAsync(destination, data) {
     // resolve and reject are functions
     // write my async non blocking IO code over here
     writeFile(destination, data, (err) => {
+      // IO events callback queue
       if (err) {
         reject(err);
       } else {
@@ -61,17 +63,17 @@ function copyAndEvenSeries(n, source, destination) {
   // ****** IO operation ****** //
   readFileAsync(source)
     .then((data) => {
-      // callback  queue
+      // microtasks  queue
       // will be executed on the event loop when the read operation becomes a success in the future!
       return writeFileAsync(destination, data);
     })
     .then(() => {
-      // callback  queue
+      // microtasks  queue
       // will be executed on the event loop when the write operation becomes a success in the future!
       console.log(`Request for client copying done!`);
     })
     .catch((err) => {
-      // callback queue
+      // microtasks queue
       // will be executed on the event loop when the read or write operation becomes a failure in the future!
       console.log(err);
     });

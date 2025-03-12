@@ -9,3 +9,11 @@
     - inform when the write operation is done
     - inform when the read operation is failure
     - inform when the write operation is a failure
+
+
+- Priority of the queues that the event loop (single thread) goes through
+  1. Current code (synchronous code) - main code
+  2. Next ticks queue
+  3. Microtasks queue
+  4. I/O events callback queue
+  5. Timers queue
